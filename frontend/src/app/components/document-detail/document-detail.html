@@ -1,0 +1,95 @@
+<div class="detail-container" *ngIf="document">
+  <div class="detail-header">
+    <button class="btn-text" routerLink="/dashboard">← BACK TO DASHBOARD</button>
+    <div class="header-content">
+      <h1>{{ document.title | uppercase }}</h1>
+      <div class="actions">
+        <button class="btn-outline" (click)="deleteDocument()" *ngIf="canEdit" style="margin-right: 1rem; border-color: #ef4444; color: #ef4444;">DELETE</button>
+        <button class="btn-primary" (click)="toggleUploadVersion()" *ngIf="canEdit">UPLOAD NEW VERSION</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-grid">
+    <div class="main-info">
+      <div class="info-card">
+        <h3>DESCRIPTION</h3>
+        <p>{{ document.description || 'NO DESCRIPTION PROVIDED.' }}</p>
+        
+        <h3>TAGS</h3>
+        <div class="tags">
+          <span class="tag" *ngFor="let tag of document.tags">{{ tag | uppercase }}</span>
+        </div>
+
+        <div class="meta">
+          <p><strong>OWNER:</strong> {{ document.owner.name | uppercase }}</p>
+          <p><strong>CREATED:</strong> {{ document.createdAt | date:'medium' | uppercase }}</p>
+          <p><strong>LAST UPDATED:</strong> {{ document.updatedAt | date:'medium' | uppercase }}</p>
+        </div>
+      </div>
+
+      <!-- Permissions Section -->
+      <div class="permissions-card" *ngIf="canShare">
+        <h3>PERMISSIONS</h3>
+        
+        <!-- Share Form -->
+        <form [formGroup]="shareForm" (ngSubmit)="onShare()" class="share-form">
+          <div class="form-group">
+            <input type="email" formControlName="email" placeholder="USER EMAIL" class="form-control">
+          </div>
+          <div class="form-group">
+            <select formControlName="access" class="form-control">
+              <option value="read">READ</option>
+              <option value="write">WRITE</option>
+              <option value="admin">ADMIN</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary btn-sm" [disabled]="shareForm.invalid">SHARE</button>
+        </form>
+
+        <!-- Permissions List -->
+        <div class="permissions-list">
+          <div class="permission-item" *ngFor="let perm of document.permissions">
+            <span class="user-name">{{ perm.user.name | uppercase }} ({{ perm.user.email }})</span>
+            <span class="access-badge" [ngClass]="perm.access">{{ perm.access | uppercase }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Version Form -->
+      <div class="upload-version-card" *ngIf="showUploadVersion">
+        <h3>UPLOAD NEW VERSION</h3>
+        <form [formGroup]="versionForm" (ngSubmit)="onUploadVersion()">
+          <div class="form-group">
+            <input type="file" (change)="onFileSelect($event)" class="form-control-file">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" (click)="toggleUploadVersion()">CANCEL</button>
+            <button type="submit" class="btn-primary" [disabled]="uploading || versionForm.invalid">
+              {{ uploading ? 'UPLOADING...' : 'UPLOAD' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="version-history">
+      <h3>VERSION HISTORY</h3>
+      <div class="version-list">
+        <div class="version-item" *ngFor="let version of document.versions.slice().reverse()">
+          <div class="version-info">
+            <span class="version-number">V{{ version.versionNumber }}</span>
+            <span class="version-date">{{ version.uploadedAt | date:'short' | uppercase }}</span>
+          </div>
+          <div class="version-uploader">
+            BY {{ version.uploadedBy?.name || 'UNKNOWN' | uppercase }}
+          </div>
+          <button class="btn-sm btn-outline" (click)="downloadVersion(version._id)">DOWNLOAD</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading" *ngIf="loading">LOADING DOCUMENT...</div>
+<div class="error" *ngIf="error">{{ error }}</div>

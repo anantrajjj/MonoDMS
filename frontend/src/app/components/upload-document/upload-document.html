@@ -1,0 +1,47 @@
+<div class="upload-container">
+  <div class="upload-card">
+    <div class="card-header">
+      <h2>UPLOAD NEW DOCUMENT</h2>
+    </div>
+    
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+      <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+
+      <div class="form-group">
+        <label for="title">TITLE</label>
+        <input type="text" id="title" formControlName="title" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f['title'].errors }">
+        <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+          <div *ngIf="f['title'].errors['required']">Title is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">DESCRIPTION</label>
+        <textarea id="description" formControlName="description" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="tags">TAGS (COMMA SEPARATED)</label>
+        <input type="text" id="tags" formControlName="tags" class="form-control" placeholder="FINANCE, REPORT, 2023">
+      </div>
+
+      <div class="form-group">
+        <label for="file">FILE</label>
+        <input type="file" id="file" (change)="onFileSelect($event)" class="form-control-file"
+               [ngClass]="{ 'is-invalid': submitted && f['file'].errors }">
+        <div *ngIf="submitted && f['file'].errors" class="invalid-feedback">
+          <div *ngIf="f['file'].errors['required']">File is required</div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" routerLink="/dashboard">CANCEL</button>
+        <button type="submit" class="btn-primary" [disabled]="loading">
+          <span *ngIf="loading" class="spinner"></span>
+          {{ loading ? 'UPLOADING...' : 'UPLOAD' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

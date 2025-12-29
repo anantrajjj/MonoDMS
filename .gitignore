@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Angular
+.angular/
+dist/
+out-tsc/
+bazel-out/
+test-files/
+/frontend/src/assets/git-version.json
+
+# Backend Uploads
+/backend/uploads/
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,268 @@
+.dashboard-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+}
+
+.dashboard-header {
+  background-color: #ffffff;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #000000;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.user-name {
+  font-weight: 700;
+  color: #000000;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.dashboard-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: #ffffff;
+  padding: 1.5rem;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.search-filters {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.input-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #000000;
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  background-color: #f9f9f9;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  background-color: #333333;
+  border-color: #333333;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+.btn-text:hover {
+  color: #333333;
+}
+
+.btn-outline {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid #000000;
+  color: #000000;
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.btn-outline:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Document List Styles */
+.document-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.document-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.document-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.doc-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #000000;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-badge {
+  font-size: 0.75rem;
+  background: #000000;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 0;
+  font-weight: 700;
+}
+
+.doc-info p {
+  margin: 0 0 1rem 0;
+  color: #666666;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.doc-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.75rem;
+  color: #000000;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #000000;
+  border-radius: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.doc-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.loading-spinner, .empty-state {
+  text-align: center;
+  padding: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #666666;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .dashboard-content {
+    padding: 1rem;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .document-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .doc-actions {
+    width: 100%;
+    justify-content: flex-end;
+    border-top: 2px solid #000000;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+  }
+}

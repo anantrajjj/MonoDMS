@@ -1,0 +1,171 @@
+.upload-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.upload-card {
+  background: #ffffff;
+  padding: 2rem;
+  border: 2px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 0;
+}
+
+.card-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 1rem;
+}
+
+.card-header h2 {
+  margin: 0;
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #000000;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #000000;
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  background-color: #f9f9f9;
+}
+
+.form-control-file {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px dashed #000000;
+  border-radius: 0;
+  background-color: #ffffff;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.form-control-file:hover {
+  background-color: #f9f9f9;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+  background-color: #333333;
+  border-color: #333333;
+}
+
+.btn-primary:disabled {
+  background-color: #666666;
+  border-color: #666666;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: #000000;
+  border: 2px solid #000000;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+
+.btn-secondary:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 600;
+}
+
+.alert-error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 0.75rem;
+  border: 2px solid #991b1b;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.invalid-feedback {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .upload-container {
+    padding: 1rem;
+  }
+  
+  .upload-card {
+    padding: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+  }
+}

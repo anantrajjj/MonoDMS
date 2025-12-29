@@ -1,0 +1,176 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+}
+
+.register-card {
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  border: 2px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+  border-radius: 0;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.logo-box {
+  width: 40px;
+  height: 40px;
+  background-color: #000000;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-inner {
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+}
+
+.register-header h2 {
+  margin: 0 0 0.5rem 0;
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.register-header p {
+  margin: 0;
+  color: #666666;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #000000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #000000;
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  outline: none;
+  background-color: #f9f9f9;
+}
+
+.password-input-wrapper {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 0 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  height: 100%;
+  border: 2px solid #000000;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 1rem;
+  background-color: #000000;
+  color: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+  background-color: #333333;
+  border-color: #333333;
+}
+
+.btn-primary:disabled {
+  background-color: #666666;
+  border-color: #666666;
+  cursor: not-allowed;
+}
+
+.register-footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666666;
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
+
+.register-footer a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-left: 0.25rem;
+}
+
+.register-footer a:hover {
+  text-decoration: underline;
+}
+
+.alert {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 2px solid #000000;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.alert-danger {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-color: #991b1b;
+}
+
+.invalid-feedback {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 600;
+}

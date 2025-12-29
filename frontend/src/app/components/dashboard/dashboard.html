@@ -1,0 +1,53 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="logo">MONODMS</div>
+    <div class="user-menu">
+      <span class="user-name" *ngIf="currentUser">WELCOME, {{ currentUser.name | uppercase }}</span>
+      <button class="btn-outline" (click)="logout()">LOGOUT</button>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+    <div class="toolbar">
+      <div class="search-filters">
+        <div class="input-group">
+          <input type="text" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()" placeholder="SEARCH DOCUMENTS..." class="form-control">
+        </div>
+        <div class="input-group">
+          <input type="text" [(ngModel)]="tagFilter" (keyup.enter)="onSearch()" placeholder="FILTER BY TAGS..." class="form-control">
+        </div>
+        <button class="btn-primary" (click)="onSearch()">SEARCH</button>
+      </div>
+      <div class="actions">
+        <button class="btn-outline" (click)="clearAllDocuments()" style="margin-right: 1rem; border-color: #ef4444; color: #ef4444;">CLEAR ALL</button>
+        <button class="btn-primary" routerLink="/upload">UPLOAD DOCUMENT</button>
+      </div>
+    </div>
+
+    <div class="loading-spinner" *ngIf="loading">LOADING...</div>
+
+    <div class="document-list" *ngIf="!loading">
+      <div class="document-card" *ngFor="let doc of documents">
+        <div class="doc-info">
+          <h3>{{ doc.title }} <span class="version-badge">V{{ doc.versions.length }}</span></h3>
+          <p>{{ doc.description || 'NO DESCRIPTION PROVIDED.' }}</p>
+          <div class="doc-meta">
+            <span>OWNER: {{ doc.owner.name | uppercase }}</span>
+            <span>•</span>
+            <span>UPDATED: {{ doc.updatedAt | date:'mediumDate' | uppercase }}</span>
+          </div>
+          <div class="tags" *ngIf="doc.tags && doc.tags.length > 0">
+            <span class="tag" *ngFor="let tag of doc.tags">{{ tag | uppercase }}</span>
+          </div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-outline" [routerLink]="['/documents', doc._id]">VIEW DETAILS</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="!loading && documents.length === 0">
+      <p>NO DOCUMENTS FOUND. UPLOAD ONE TO GET STARTED!</p>
+    </div>
+  </main>
+</div>
