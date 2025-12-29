@@ -52,20 +52,21 @@ It focuses on secure document handling, version control, role-based access, and 
 
 ## 📁 Project Structure
 
+```
+
 monodms/
 ├── backend/
-│ ├── controllers/
-│ ├── models/
-│ ├── routes/
-│ ├── middleware/
-│ └── uploads/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   └── uploads/
 ├── frontend/
-│ ├── src/
-│ └── angular.json
+│   ├── src/
+│   └── angular.json
 └── README.md
 
-yaml
-Copy code
+````
 
 ---
 
@@ -78,92 +79,107 @@ Copy code
 
 ```bash
 npm install -g @angular/cli
-Backend Setup
-bash
-Copy code
+````
+
+---
+
+### Backend Setup
+
+```bash
 cd backend
 npm install
-Create a .env file inside the backend directory:
+```
 
-env
-Copy code
+Create a `.env` file inside the `backend` directory:
+
+```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/monodms
 JWT_SECRET=your_secret_key
 JWT_EXPIRE=30d
+```
+
 Start the backend server:
 
-bash
-Copy code
+```bash
 npm run dev
-Backend runs on:
-http://localhost:5000
+```
 
-Frontend Setup
-bash
-Copy code
+Backend runs on:
+`http://localhost:5000`
+
+---
+
+### Frontend Setup
+
+```bash
 cd frontend
 npm install
 ng serve
+```
+
 Frontend runs on:
-http://localhost:4200
+`http://localhost:4200`
 
-🔌 API Overview
-Authentication
-POST /api/auth/register – Register user
+---
 
-POST /api/auth/login – Login user
+## 🔌 API Overview
 
-Documents
-GET /api/documents – Fetch documents (search & filter supported)
+### Authentication
 
-POST /api/documents – Upload document
+* `POST /api/auth/register` – Register user
+* `POST /api/auth/login` – Login user
 
-GET /api/documents/:id – Get document details
+### Documents
 
-PUT /api/documents/:id – Update document metadata
+* `GET /api/documents` – Fetch documents (search & filter supported)
+* `POST /api/documents` – Upload document
+* `GET /api/documents/:id` – Get document details
+* `PUT /api/documents/:id` – Update document metadata
+* `DELETE /api/documents/:id` – Delete document
+* `POST /api/documents/:id/share` – Share document with permissions
 
-DELETE /api/documents/:id – Delete document
+### Versions
 
-POST /api/documents/:id/share – Share document with permissions
+* `POST /api/documents/:id/versions` – Upload new version
+* `GET /api/documents/:id/versions` – Get version history
+* `GET /api/documents/:id/versions/:versionId/download` – Download specific version
 
-Versions
-POST /api/documents/:id/versions – Upload new version
+---
 
-GET /api/documents/:id/versions – Get version history
+## 🖼 Screenshots
 
-GET /api/documents/:id/versions/:versionId/download – Download specific version
-
-🖼 Screenshots
 Screenshots included for:
 
-Login & Registration
+* Login & Registration
+* Document Dashboard
+* Upload & Versioning
+* Search & Filtering
+* Permission Management
+* Responsive Mobile View
 
-Document Dashboard
+---
 
-Upload & Versioning
+## 🧠 Design Choices
 
-Search & Filtering
+* **Standalone Angular components** reduce boilerplate and improve maintainability.
+* **Service-based RxJS state management** keeps the app simple without heavy libraries.
+* **Backend-level permission enforcement** ensures secure access control.
+* File storage is modular and can be extended to cloud services if required.
 
-Permission Management
+---
 
-Responsive Mobile View
+## 🚀 Future Improvements
 
-🧠 Design Choices
-Standalone Angular components reduce boilerplate and improve maintainability.
+* Cloud storage integration (AWS S3 / Azure Blob)
+* Audit logs for document activity
+* Advanced full-text search
 
-Service-based RxJS state management keeps the app simple without heavy libraries.
+---
 
-Backend-level permission enforcement ensures secure access control.
+## 📄 License
 
-File storage is modular and can be extended to cloud services if required.
+This project is licensed under the **MIT License**.
 
-🚀 Future Improvements
-Cloud storage integration (AWS S3 / Azure Blob)
+```
 
-Audit logs for document activity
-
-Advanced full-text search
-
-📄 License
-This project is licensed under the MIT License.
