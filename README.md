@@ -1,108 +1,173 @@
-# MonoDMS - Enterprise Document Management System
+MonoDMS – Document Management System
 
-MonoDMS is a robust, full-stack Document Management System (DMS) designed to handle enterprise-grade document lifecycles. It features secure authentication, role-based access control (RBAC), version control, and a responsive user interface.
+MonoDMS is a full-stack Document Management System built using the MEAN stack.
+The project focuses on secure document handling, version control, role-based access, and responsive UI design, inspired by real-world tools such as Google Drive and SharePoint.
 
-## 🚀 Features
+Features
 
-*   **User Authentication**: Secure Login and Registration using JWT (JSON Web Tokens).
-*   **Document Management**: Upload, view, edit, and delete documents.
-*   **Version Control**: Maintain history of document changes with the ability to download previous versions.
-*   **Role-Based Access Control (RBAC)**:
-    *   **Owners**: Full control over their documents.
-    *   **Admins**: System-wide control (can be extended).
-    *   **Shared Access**: Granular permissions (Read, Write, Admin) for specific users.
-*   **Search & Filtering**: Find documents by title, tags, or owner.
-*   **Responsive Design**: Optimized for both desktop and mobile devices.
-*   **Security**: Implements Helmet, CORS, Mongo Sanitize, and XSS protection.
+User Authentication
 
-## 🛠️ Tech Stack
+Secure user registration and login using JWT
 
-### Backend (Node.js & Express)
-*   **Runtime**: Node.js
-*   **Framework**: Express.js
-*   **Database**: MongoDB (with Mongoose ODM)
-*   **Authentication**: JWT & bcryptjs
-*   **File Handling**: Multer
-*   **Security**: Helmet, CORS, XSS-Clean, Express-Mongo-Sanitize
+Document Management
 
-### Frontend (Angular)
-*   **Framework**: Angular 16+
-*   **Architecture**: Standalone Components
-*   **Styling**: Custom CSS with CSS Variables (Responsive)
-*   **State Management**: RxJS (Services & Observables)
-*   **Routing**: Angular Router with Auth Guards
+Upload, view, update, and delete documents
 
-## 📋 Prerequisites
+Version Control
 
-*   Node.js (v14 or higher)
-*   MongoDB (Local or Atlas connection string)
-*   Angular CLI (`npm install -g @angular/cli`)
+Maintains multiple versions of documents
 
-## ⚙️ Installation & Setup
+Allows downloading previous versions
 
-### 1. Clone the Repository
-```bash
+Role-Based Access Control (RBAC)
+
+Owner: Full access to documents
+
+Editor: Edit and upload new versions
+
+Viewer: Read-only access
+
+Search & Filtering
+
+Search documents by title, tags, or owner
+
+Responsive Design
+
+Works across desktop, tablet, and mobile devices
+
+Tech Stack
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB (Mongoose ODM)
+
+JWT Authentication
+
+Multer (File Uploads)
+
+Frontend
+
+Angular 16+
+
+Standalone Components
+
+Angular Router with Auth Guards
+
+RxJS for state handling
+
+Custom responsive CSS
+
+Prerequisites
+
+Ensure the following are installed locally:
+
+Node.js v14 or above
+
+MongoDB (local or MongoDB Atlas)
+
+Angular CLI
+
+npm install -g @angular/cli
+
+Installation & Local Setup
+1. Clone the Repository
 git clone <repository-url>
 cd monodms
-```
 
-### 2. Backend Setup
-```bash
+2. Backend Setup
 cd backend
 npm install
-```
 
-Create a `.env` file in the `backend` directory:
-```env
+
+Create a .env file inside the backend directory:
+
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/monodms
-JWT_SECRET=your_super_secret_key_change_this
+JWT_SECRET=your_secret_key
 JWT_EXPIRE=30d
-```
 
-Start the server:
-```bash
+
+Start the backend server:
+
 npm run dev
-```
 
-### 3. Frontend Setup
-```bash
+
+Backend runs on:
+http://localhost:5000
+
+3. Frontend Setup
 cd frontend
 npm install
-```
-
-Start the application:
-```bash
 ng serve
-```
-Navigate to `http://localhost:4200`.
 
-## 🔌 API Endpoints
 
-### Auth
-*   `POST /api/auth/register` - Register a new user
-*   `POST /api/auth/login` - Login user
+Frontend runs on:
+http://localhost:4200
 
-### Documents
-*   `GET /api/documents` - Get all documents (with search/filter)
-*   `POST /api/documents` - Upload a new document
-*   `GET /api/documents/:id` - Get document details
-*   `PUT /api/documents/:id` - Update document metadata
-*   `DELETE /api/documents/:id` - Delete document
-*   `POST /api/documents/:id/share` - Share document with user
+API Endpoints (Backend)
+Authentication
 
-### Versions
-*   `POST /api/documents/:id/versions` - Upload new version
-*   `GET /api/documents/:id/versions` - Get version history
-*   `GET /api/documents/:id/versions/:versionId/download` - Download specific version
+POST /api/auth/register – Register user
 
-## 💡 Design Decisions
+POST /api/auth/login – Login user
 
-*   **Standalone Components**: Used Angular's latest standalone component architecture to reduce boilerplate (NgModules) and improve tree-shaking.
-*   **Service-Based State**: Authentication and Document state are managed via RxJS BehaviorSubjects in services, providing a reactive data flow without the complexity of NgRx for this scale.
-*   **Security First**: The backend enforces permissions at the middleware level (`checkDocumentPermission`), ensuring that API endpoints are secure regardless of frontend UI states.
-*   **Scalable File Storage**: While currently using local disk storage (`/uploads`), the `uploadMiddleware` is abstracted to easily switch to cloud storage (AWS S3, Azure Blob) in the future.
+Documents
 
-## 📄 License
+GET /api/documents – Fetch documents (search & filter supported)
 
-This project is licensed under the MIT License.
+POST /api/documents – Upload document
+
+GET /api/documents/:id – Get document details
+
+PUT /api/documents/:id – Update document metadata
+
+DELETE /api/documents/:id – Delete document
+
+POST /api/documents/:id/share – Share document with permissions
+
+Versions
+
+POST /api/documents/:id/versions – Upload new version
+
+GET /api/documents/:id/versions – View version history
+
+GET /api/documents/:id/versions/:versionId/download – Download version
+
+Screenshots
+
+The following screenshots are included in the submission email:
+
+Login Page
+
+Registration Page
+
+Document Dashboard
+
+Document Upload Page
+
+Search & Filter Functionality
+
+Document Details View
+
+Version History View
+
+Permission Management
+
+Responsive Mobile View
+
+Design Decisions
+
+Standalone Angular Components were used to reduce boilerplate and improve maintainability.
+
+Service-based state management using RxJS was chosen over NgRx to keep the application simple and scalable.
+
+Backend permission checks are enforced at middleware level to prevent unauthorized access.
+
+Local file storage was used for simplicity, with a structure that can be extended to cloud storage if needed.
+
+License
+
+This project is developed as part of an assignment and is licensed under the MIT License.
